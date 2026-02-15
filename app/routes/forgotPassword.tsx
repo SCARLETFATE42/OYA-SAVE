@@ -14,7 +14,7 @@ export default function ForgotPassword() {
     <div className="flex  flex-col justify-center px-6 py-[103px] md:items-center lg:px-8 font-aeonik">
       <Box className="w-full max-w-[350px] md:max-w-[400px]">
         <Box className="flex flex-col items-start mb-6">
-          <Text className="text-3xl! font-bold! pb-1! text-[28px]! text-black!">Forgot Password</Text>
+          <Text className="text-3xl! font-bold! pb-1! text-[28px]! text-[#393F4A]!">Forgot Password</Text>
           <Text className="text-base font-medium! text-[#98A2B3]! text-[16px]!">Enter your email to reset password.</Text>      
         </Box>
         
@@ -26,7 +26,7 @@ export default function ForgotPassword() {
         </form>
 
         <Box className="w-full text-center">
-            <Anchor component={Link} to="/signinPage" c="dimmed" size="sm">
+            <Anchor component={Link} to="/signin" c="dimmed" size="sm">
                 Back to Sign In
             </Anchor>
         </Box>
