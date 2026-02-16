@@ -46,7 +46,7 @@ export default function SigninPage() {
         
         <form id="signin-form" onSubmit={handleSubmit} className="w-full pb-6">
           <label htmlFor="email" className="block mb-1 text-[16px] font-normal text-[#393F4A]!">Email</label>
-          <Input id="email" radius="md" placeholder="Enter Email Address" mb={16} w="100%" required />
+          <Input id="email" radius="md" placeholder="Enter Email Address" mb={16} w="100%" size="md" required />
 
           <label htmlFor="password" className="block mb-1 text-[16px] font-normal text-[#393F4A]!">Password</label>
           <PasswordInput
@@ -60,6 +60,7 @@ export default function SigninPage() {
             required
             onVisibilityChange={toggle}
             error={error}
+            size="md"
           />
         </form>
         <Box className="flex items-center justify-between">

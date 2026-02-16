@@ -20,4 +20,18 @@
   --font-sans: "Aeonik TRIAL", "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-
+/* PinInput: stretch inputs to full width on mobile only */
+@media (max-width: 767px) {
+  .pin-input-mobile .mantine-PinInput-root {
+    width: 100%;
+  }
+  .pin-input-mobile .mantine-PinInput-pinInput {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+  }
+  .pin-input-mobile .mantine-PinInput-input {
+    flex: 1;
+    width: 100%;
+  }
+}
