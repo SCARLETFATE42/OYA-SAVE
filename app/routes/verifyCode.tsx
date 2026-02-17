@@ -1,15 +1,17 @@
 import { Box, Button, Group, PinInput, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import type { Route } from "./+types/verifyCode";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Verify Code" },
+    { title: "OYA SAVE " },
     { name: "description", content: "Verify your code" },
   ];
 }
 
 export default function VerifyCode() {
+  const navigate = useNavigate();
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -36,6 +38,7 @@ export default function VerifyCode() {
       // Example verification logic
       if (code.length === 4) {
         setMessage("Success! Code verified.");
+        setTimeout(() => navigate("/setNewPassword"), 800);
       } else {
         setMessage("Error: Invalid code.");
       }

@@ -4,7 +4,7 @@ import type { Route } from "./+types/forgotPassword";
 
     export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Forgot Password" },
+    { title: "OYA SAVE" },
     { name: "description", content: "Reset your password" },
   ];
 }
