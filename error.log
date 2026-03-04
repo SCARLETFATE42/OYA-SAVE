@@ -1,0 +1,48 @@
+{
+  "rawError": {
+    "__isAuthError": true,
+    "name": "AuthRetryableFetchError",
+    "status": 504
+  },
+  "stringified": "{\"__isAuthError\":true,\"name\":\"AuthRetryableFetchError\",\"status\":504}",
+  "messageProp": "{}",
+  "nameProp": "AuthRetryableFetchError",
+  "keys": [
+    "__isAuthError",
+    "name",
+    "status",
+    "code"
+  ]
+}
+{
+  "rawError": {
+    "__isAuthError": true,
+    "name": "AuthRetryableFetchError",
+    "status": 504
+  },
+  "stringified": "{\"__isAuthError\":true,\"name\":\"AuthRetryableFetchError\",\"status\":504}",
+  "messageProp": "{}",
+  "nameProp": "AuthRetryableFetchError",
+  "keys": [
+    "__isAuthError",
+    "name",
+    "status",
+    "code"
+  ]
+}
+{
+  "rawError": {
+    "__isAuthError": true,
+    "name": "AuthRetryableFetchError",
+    "status": 504
+  },
+  "stringified": "{\"__isAuthError\":true,\"name\":\"AuthRetryableFetchError\",\"status\":504}",
+  "messageProp": "{}",
+  "nameProp": "AuthRetryableFetchError",
+  "keys": [
+    "__isAuthError",
+    "name",
+    "status",
+    "code"
+  ]
+}

@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import SigninPage from "./signinPage";
+import OnboardingScreen from "./onboardingscreen";
 
 
 export function meta({}: Route.MetaArgs) {
@@ -10,5 +11,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return  <SigninPage />;
+  return  <OnboardingScreen />;
 }

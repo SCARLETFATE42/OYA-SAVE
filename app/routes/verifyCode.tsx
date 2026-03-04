@@ -1,7 +1,8 @@
 import { Box, Button, Group, PinInput, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useSearchParams } from "react-router";
 import type { Route } from "./+types/verifyCode";
+import { createSupabaseClient } from "../lib/supabase.client";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -12,6 +13,9 @@ export function meta({}: Route.MetaArgs) {
 
 export default function VerifyCode() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const fromSignup = searchParams.get("from") === "signup";
+  const email = searchParams.get("email") || "";
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -30,26 +34,55 @@ export default function VerifyCode() {
     return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  const handleVerifyCode = () => {
+  const handleVerifyCode = async () => {
+    if (code.length !== 6) {
+      setMessage("Error: Please enter a 6-digit code.");
+      return;
+    }
+
     setLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false);
-      // Example verification logic
-      if (code.length === 4) {
-        setMessage("Success! Code verified.");
-        setTimeout(() => navigate("/setNewPassword"), 800);
-      } else {
-        setMessage("Error: Invalid code.");
-      }
-    }, 1500);
+    setMessage(null);
+
+    const supabase = createSupabaseClient();
+    const { data, error } = await supabase.auth.verifyOtp({
+      email,
+      token: code,
+      type: "email",
+    });
+
+    setLoading(false);
+
+    if (error) {
+      setMessage(`Error: ${error.message}`);
+    } else {
+      setMessage("Success! Code verified.");
+      setTimeout(() => {
+        if (fromSignup) {
+          navigate("/passwordChanged?from=signup");
+        } else {
+          navigate("/setNewPassword");
+        }
+      }, 800);
+    }
   };
 
-  const handleResendCode = () => {
-    if (timeLeft === 0) {
-      setTimeLeft(60);
-      setMessage("Code resent!");
-      // Add logic to actually resend the code here
+  const handleResendCode = async () => {
+    if (timeLeft === 0 && email) {
+      setMessage("Resending code...");
+      const supabase = createSupabaseClient();
+      const { data, error } = await supabase.auth.resend({
+        type: "signup",
+        email,
+      });
+
+      if (error) {
+        setMessage(`Error: ${error.message}`);
+      } else {
+        setTimeLeft(60);
+        setMessage("Code resent successfully!");
+      }
+    } else if (!email) {
+      setMessage("Error: Emal address is missing.");
     }
   };
 
@@ -66,7 +99,7 @@ export default function VerifyCode() {
         <Group justify="center" className="w-full mb-6 relative pin-input-mobile">
           <PinInput
             size="xl"
-            length={4}
+            length={6}
             value={code}
             radius={12}
             onChange={(value) => setCode(value.toUpperCase())}

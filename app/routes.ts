@@ -7,4 +7,6 @@ export default [
   route("verifyCode", "routes/verifyCode.tsx"),
   route("setNewPassword", "routes/setNewPassword.tsx"),
   route("passwordChanged", "routes/passwordChanged.tsx"),
+  route("onboarding", "routes/onboardingscreen.tsx"),
+  route("signup", "routes/signupScreen.tsx"),
 ] satisfies RouteConfig;

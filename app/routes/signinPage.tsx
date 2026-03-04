@@ -89,7 +89,7 @@ export default function SigninPage() {
 
       <Box className="flex items-center justify-center w-full text-center mt-4!">
         <Text className="text-base font-normal! text-[#98A2B3]! text-[16px]!">Don't have an account?</Text>
-            <Anchor component={Link} to="/signupPage" c="dimmed" size="sm" className="text-[#44A1A0]! ml-1!">
+            <Anchor component={Link} to="/signup" c="d  immed" size="sm" className="text-[#44A1A0]! ml-1!">
                 Sign Up
             </Anchor>
         </Box>
